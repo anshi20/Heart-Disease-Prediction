@@ -1,0 +1,98 @@
+<!-- This is GUI for Heart Disease Prediction Using Machine Learning Classifer -->
+
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>HeartBuddy</title>
+
+  <style>
+    /* CSS code for button */
+    body {
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    .banner {
+      display: flex;
+      justify-content: center;
+    }
+
+    /* CSS code for button */
+    .button_css {
+    color: #67094b !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: hsl(328, 91%, 86%);
+    padding: 20px;
+    border: 4px solid #4f0944 !important;
+    display: inline-block;
+    transition: all 0.4s ease 0s;
+    }
+    
+    .button_css:hover {
+    color: #ffffff !important;
+    background: #f1288d;
+    border-color: #db0f7c !important;
+    transition: all 0.4s ease 0s;
+    }
+  </style>
+  <link rel="shortcut icon" href="# /">
+</head>
+
+<body>
+
+  <!-- Show Banner-->
+  <div class="banner">
+    <img src="/static/images/heart.jpg" class="w3-border w3-padding" style="width:45% ">
+  </div>
+ 
+ 
+ <div class="login">
+	
+    <!-- Get input for predict the cancer -->
+    <center>
+    <form action="{{ url_for('predict')}}"method="post">
+        <h3>Input values : </h3>
+        
+    	<input type="text" name="age" placeholder="Age" required="required" />
+        <input type="text" name="sex" placeholder="Gender (1:Male  0:Female)" required="required" />
+		<input type="text" name="cp" placeholder="Chest Pain type(0,1,2,3)" required="required" />
+        <br>
+		<input type="text" name="trestbps" placeholder="Resting Blood Pressure(in mm Hg)" required="required" />
+        <input type="text" name="chol" placeholder="Serum cholestrol(in mg/dl)" required="required" />
+		<input type="text" name="fbs" placeholder="Fasting Blood Sugar> 120mg/dl" required="required" />
+		<br>
+    	<input type="text" name="restecg" placeholder="ECG results" required="required" />
+        <input type="text" name="thalach" placeholder="Max. heart rate acheived" required="required" />
+		<input type="text" name="exang" placeholder="Excercise induced angina" required="required" />
+    	<br>
+        <input type="text" name="oldpeak" placeholder="ST depression" required="required" />
+        <input type="text" name="slope" placeholder="slope" required="required" />
+        <input type="text" name="ca" placeholder="No. of major vessels" required="required" />
+		
+		<br>
+    <input type="text" name="thal" placeholder="Thal" required="required" />
+        <br>
+        <br>
+        
+        <!-- Show button -->
+        
+        <button type="submit" class="btn btn-primary button_css"><strong>Predict heart health</strong></button>
+        
+        
+    </form>
+    </center>
+   
+   <!-- Show predicted output using ML model --> 
+   <div>
+       <center>
+   <h3>{{ prediction_text }}</h3>
+       </center>
+   </div>
+
+ </div>
+
+</body>
+</html>
